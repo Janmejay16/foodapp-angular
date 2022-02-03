@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html ng-app="FoodApp">
+<head>
+    <meta chrset="UTF 8">
+    <title>Food Factory</title>
+    <script src="./angular.min.js"></script>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6376f55227.js" crossorigin="anonymous"></script>
+</head>
+<body ng-controller="FoodController">
+    <!-- Navbar section -->
+    <div id="navbar" ng-class="theme=='dark' ? 'navdark' : 'navlight'">
+        <ul>
+            <li class="logo">
+                    <img src="./images/logo.png" />
+            </li>
+
+            <li ng-show="loggedIn" class="normal">
+                <i class="fas fa-user"></i><span>&nbsp;&nbsp;{{currentUser.username}}</span>
+            </li>
+
+            <li ng-show="loggedIn" ng-click="cartVisibility()"  class="normal">
+                <i ng-hide="cartNotEmpty" class="fas fa-shopping-cart"></i>
+                <i id="cartNotEmpty" ng-show="cartNotEmpty" class="fas fa-shopping-cart"></i>
+                &nbsp;&nbsp;Cart
+            </li>
+
+            <li ng-click="logout()" ng-show="loggedIn" class="normal">
+                <i class="fas fa-sign-out-alt">&nbsp;&nbsp;</i>Logout
+            </li>
+
+            <li ng-hide="loggedIn" ng-click="switchLogin()" class="right normal">
+                Login
+            </li>
+
+            <li ng-hide="loggedIn" ng-click="switchRegister()" class="normal">
+                Register
+            </li>
+
+            <li ng-class="theme == 'light' ? 'visible lighticon' : 'hide' " ng-click="changeTheme()">
+                <abbr title="Dark Mode"><i class="fas fa-moon"></i></abbr>
+            </li>
+
+            <li ng-class="theme == 'dark' ? 'visible' : 'hide' " ng-click="changeTheme()">
+                <abbr title="Light Mode"><i class="fas fa-sun"></i></abbr>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <!-- Login Section -->
+        <div ng-show="login" ng-class="theme=='dark' ? 'userdark' : 'userlight' " id="login">
+            <div class="image"></div>
+            <div class="comp">
+                <!-- <div class="logo">
+                    <img src="images/logo.png" />
+                </div> -->
+                <input ng-model="username" name="name" class="input" id="standard-basic" placeholder="Name" />
+                <input ng-model="password" name="password" class="input" type="password" id="standard-basic" placeholder="Password" />
+                <button class="button" ng-click="LoginUser()">LOGIN</button>
+                <p>Not a member yet? <span ng-click="switch()">Sign Up Here!</span></p>
+            </div>
+        </div>
+
+        <!-- Register Section -->
+        <div ng-show="register" ng-class="theme=='dark' ? 'userdark' : 'userlight' " id="register">
+            <div class="image"></div>
+            <div class="comp">
+                <!-- <div class="logo">
+                    <img src="images/logo.png" />
+                </div> -->
+                <input ng-model="username" class="input" id="standard-basic" placeholder="Name" />
+                <input ng-model="email" class="input" id="standard-basic" placeholder="Email" />
+                <input ng-model="mobile" type="number" class="input" id="standard-basic" placeholder="Mobile" />
+                <input ng-model="password" type="password" class="input" id="standard-basic" placeholder="Password" />
+                <button class="button" ng-click="RegisterUser()">REGISTER</button>
+                <p>Already a member? <span ng-click="switch()">Sign In Here!</span></p>
+            </div>
+        </div>
+
+        <!-- Food Items Section -->
+        <div class="{{theme}}" ng-show="loggedIn" id="Post">
+            <div id="filters">
+                <div class="buttons">
+                    <button ng-click="orderByPriceAsc()">Order By Price Ascending</button>
+                    <button ng-click="orderByPriceDes()">Order By Price Descending</button>
+                    <button class="clear" ng-click="resetFilter()">Clear Price Filter</button>
+                </div>
+                <input ng-model="search.name" placeholder="Search Item" >
+                <input ng-model="search.area" placeholder="Search Restaurant" >
+            </div>
+            <div class="restaurants">
+                <div class="item" ng-repeat="item in items | filter: search | orderBy: OrderBy">
+                    <div class="image">
+                        <img ng-src="images/{{item.image}}" />
+                    </div>
+                    <div class="row1">
+                        <div class="name">
+                            <h2>{{item.name}}</h2>
+                        </div>
+                        <div class="rating">
+                            <h1> {{item.rating}} </h1>
+                        </div>
+                    </div>
+                    <div class="row3">
+                        <h4 class="area">{{item.area}}</h4>
+                        <p>
+                            <span ng-click="addQuantity(item)"><i class="fas fa-plus"></i></span>
+                            <span class="quantity">{{item.quantity}}</span>
+                            <span ng-click="subtractQuantity(item)"><i class="fas fa-minus"></i></span>
+                        </p>
+                    </div>
+                    <div class="row2">
+                        <div class="explore">
+                            <h5 ng-hide="item.addedToCart" ng-click="addToCart(item)">Add to Cart</h5>
+                            <h5 ng-show="item.addedToCart" ng-click="removeFromCart(item)">Remove From Cart</h5>
+                        </div>
+                        <div class="cost">
+                            <h6>{{item.cost}} INR per Item</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Icon, Cart Items and Bill -->
+        <div ng-show="showCart" ng-class="theme=='dark' ? 'cartdark' : cartlight" id="cart">
+            <div class="content">
+                <!-- <div ng-show="cartNotEmpty" class="userdetails"> -->
+                    <div class="userdetails">
+                    <h1>Cart Items</h1>
+                    <h2>User : {{currentUser.username}}</h2>
+                    <h2>Email : {{currentUser.email}}</h2>
+                    <h2>Date : {{CurrentDate | date:'dd/MM/yyyy/EEE' | datesFilter}}</h2>
+                </div>
+                <div ng-show="cartNotEmpty" class="cartItems">
+                    <div class="item" id="head">
+                        <p class="name">Name</p>
+                        <p class="cost">Cost</p>
+                        <p class="quantity">Qty</p>
+                        <p class="amount">Price</p>
+                    </div>
+                    <div class="item" ng-repeat="item in cartItems">
+                        <p class="name">{{item.name}}</p>
+                        <p class="cost">{{item.cost}}</p>
+                        <p class="quantity">{{item.quantity}}</p>
+                        <p class="amount">{{item.price}}</p>
+                    </div>
+                    <div class="total">
+                        <div class="name">Total Amount : </div>
+                        <p>{{totalAmount}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

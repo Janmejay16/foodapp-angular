@@ -1,0 +1,932 @@
+body {
+  margin: 0;
+  font-family: 'poppins';
+}
+
+#navbar {
+  width: 100vw;
+  position: fixed;
+  height: 10vh;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  -webkit-box-shadow: inset 1px 0px 10px 0px #888888;
+          box-shadow: inset 1px 0px 10px 0px #888888;
+}
+
+#navbar #cartNotEmpty {
+  -webkit-animation: cartAnim 0.2s infinite linear;
+          animation: cartAnim 0.2s infinite linear;
+  color: #ca0d0d;
+  font-size: 1.4vw;
+}
+
+#navbar ul {
+  width: 80%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  padding: 1vw 0;
+}
+
+#navbar .visible {
+  position: absolute;
+  right: 4vw;
+  color: white;
+  font-size: 1.5vw;
+  cursor: pointer;
+}
+
+#navbar .lighticon {
+  color: black;
+}
+
+#navbar .hide {
+  display: none;
+}
+
+#navbar .normal {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 15%;
+  margin: 0 auto;
+  color: black;
+  padding: 0.5vw 0;
+  font-size: 1vw;
+  border: 2px solid #ca0d0d;
+  border-radius: 1vw;
+  color: black;
+}
+
+#navbar .normal span {
+  font-weight: 700;
+  color: #777;
+  font-size: 1.2vw;
+}
+
+#navbar .normal:hover, #navbar .normal a:active {
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+  background: #ca0d0d;
+  -webkit-transition: linear 0.5s;
+  transition: linear 0.5s;
+}
+
+#navbar .normal:hover span, #navbar .normal a:active span {
+  color: white;
+  -webkit-transition: linear 0.5s;
+  transition: linear 0.5s;
+}
+
+#navbar .normal:hover #cartNotEmpty, #navbar .normal a:active #cartNotEmpty {
+  color: #fff;
+}
+
+#navbar .right {
+  width: 15%;
+  margin: 0 5%;
+  margin-left: 30%;
+}
+
+#navbar .logo {
+  width: 40%;
+}
+
+#navbar .logo img {
+  max-width: 60%;
+  max-height: 8vh;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.navdark {
+  background: #252525 !important;
+  background: white;
+  -webkit-box-shadow: inset 1px 0px 10px 0px #333 !important;
+          box-shadow: inset 1px 0px 10px 0px #333 !important;
+}
+
+.navdark #cartNotEmpty {
+  color: #c90c0c !important;
+}
+
+.navdark .normal {
+  color: white !important;
+  border: 2px solid #ca242481 !important;
+  color: black;
+}
+
+.navdark .normal span {
+  color: 666 !important;
+}
+
+.navdark .normal:hover, .navdark .normal a:active {
+  color: white;
+  border: none !important;
+  background: #ca242441 !important;
+}
+
+.navdark .normal:hover span, .navdark .normal a:active span {
+  color: white;
+}
+
+.navdark .normal:hover #cartNotEmpty, .navdark .normal a:active #cartNotEmpty {
+  color: #fff;
+}
+
+.main {
+  width: 100vw;
+  height: 90vh;
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.main::-webkit-scrollbar {
+  width: 5px;
+  color: black;
+}
+
+.main::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px black;
+          box-shadow: inset 0 0 5px black;
+  border-radius: 10px;
+}
+
+.main::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+
+.main #login, .main #register {
+  width: 100vw;
+  height: 90vh;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main #login .image, .main #register .image {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  height: 90vh;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("./images/login2.jfif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.main #login .comp, .main #register .comp {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  width: 50%;
+  text-align: center;
+}
+
+.main #login .comp .logo, .main #register .comp .logo {
+  width: 100%;
+  margin: 1vw auto;
+}
+
+.main #login .comp .logo img, .main #register .comp .logo img {
+  width: 60%;
+}
+
+.main #login .comp .input, .main #register .comp .input {
+  width: 60%;
+  font-family: 'Poppins';
+  margin: 0.5vw auto;
+  font-size: 1.4vw;
+  border: none;
+  border-bottom: 0.1vw solid rgba(0, 0, 0, 0.4);
+  padding: 1vw 0;
+  padding-left: 1vw;
+}
+
+.main #login .comp .input::-webkit-input-placeholder, .main #register .comp .input::-webkit-input-placeholder {
+  padding: 0;
+}
+
+.main #login .comp .input:-ms-input-placeholder, .main #register .comp .input:-ms-input-placeholder {
+  padding: 0;
+}
+
+.main #login .comp .input::-ms-input-placeholder, .main #register .comp .input::-ms-input-placeholder {
+  padding: 0;
+}
+
+.main #login .comp .input::placeholder, .main #register .comp .input::placeholder {
+  padding: 0;
+}
+
+.main #login .comp .button, .main #register .comp .button {
+  width: 60%;
+  font-family: 'Poppins';
+  height: 3vw;
+  margin: 2vw auto;
+  background: #ca0d0d;
+  padding: 0.5vw 0;
+  border: none;
+  color: white;
+  font-size: 1.2vw;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 4px;
+}
+
+.main #login .comp p, .main #register .comp p {
+  width: 60%;
+  margin: 1vw auto;
+  font-size: 1.2vw;
+  font-weight: 400;
+}
+
+.main #login .comp p span, .main #register .comp p span {
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.main .userdark {
+  background: #171717 !important;
+}
+
+.main .userdark .comp .input {
+  background-color: transparent !important;
+  border-bottom: 0.1vw solid #ccc !important;
+  color: white !important;
+}
+
+.main .userdark .comp .input::-webkit-input-placeholder {
+  color: white !important;
+}
+
+.main .userdark .comp .input:-ms-input-placeholder {
+  color: white !important;
+}
+
+.main .userdark .comp .input::-ms-input-placeholder {
+  color: white !important;
+}
+
+.main .userdark .comp .input::placeholder {
+  color: white !important;
+}
+
+.main .userdark .comp .button {
+  background: #ca2424aa !important;
+  color: white;
+}
+
+.main .userdark .comp p {
+  color: white !important;
+}
+
+.main .userdark .comp p span {
+  color: #555 !important;
+}
+
+.main #Post {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1vw 0;
+}
+
+.main #Post #filters {
+  width: 90%;
+  margin: 1vw auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding-top: 1vw;
+  padding-bottom: 2vw;
+}
+
+.main #Post #filters .buttons {
+  margin-left: 2%;
+  width: 15%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-right: 2px solid #ca0d0d;
+}
+
+.main #Post #filters .buttons button {
+  width: 80%;
+  margin: 0 0 1vw 0;
+  border-radius: 1vw;
+  border: none;
+  -webkit-box-shadow: inset 1px 2px 8px 4px #dedede;
+          box-shadow: inset 1px 2px 8px 4px #dedede;
+  background: white;
+  font-size: 0.7vw;
+  padding: 0.7vw 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.main #Post #filters .buttons .clear {
+  background: #ca0d0d;
+  -webkit-box-shadow: inset 1px 2px 8px 4px #942711;
+          box-shadow: inset 1px 2px 8px 4px #942711;
+  color: white;
+  border: none;
+  font-weight: 700;
+}
+
+.main #Post #filters input {
+  width: 35%;
+  margin: 0 auto;
+  font-family: 'Poppins';
+  font-size: 1.4vw;
+  border: none;
+  border-bottom: 0.1vw solid rgba(0, 0, 0, 0.4);
+  padding: 1vw 0;
+  padding-left: 1vw;
+}
+
+.main #Post #filters input::-webkit-input-placeholder {
+  padding: 0;
+}
+
+.main #Post #filters input:-ms-input-placeholder {
+  padding: 0;
+}
+
+.main #Post #filters input::-ms-input-placeholder {
+  padding: 0;
+}
+
+.main #Post #filters input::placeholder {
+  padding: 0;
+}
+
+.main #Post .restaurants {
+  width: 90%;
+  margin: 2vw auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.main #Post .restaurants .item {
+  border-radius: 1.5vw;
+  -webkit-box-shadow: inset 1px 2px 8px 4px #dedede;
+          box-shadow: inset 1px 2px 8px 4px #dedede;
+  width: 20%;
+  margin: 1vw 0;
+  margin-right: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.main #Post .restaurants .item:nth-child(4n) {
+  margin-right: 0;
+}
+
+.main #Post .restaurants .item .row1, .main #Post .restaurants .item .row2, .main #Post .restaurants .item .row3 {
+  width: 90%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.main #Post .restaurants .item .row1 {
+  margin: 2px 0 0 0;
+}
+
+.main #Post .restaurants .item .row1 .name {
+  padding: 0;
+  width: 80%;
+  margin: 0 5% 0 0;
+  font-size: 1.2vw;
+}
+
+.main #Post .restaurants .item .row1 .name h2 {
+  margin: 0;
+  line-height: 100%;
+}
+
+.main #Post .restaurants .item .row1 .rating {
+  width: 20%;
+  margin: 0;
+  padding: 0;
+  line-height: 100%;
+  text-align: center;
+  color: #ca0d0d;
+  font-size: 1vw;
+}
+
+.main #Post .restaurants .item .row2 .explore {
+  width: 55%;
+  height: 1.6vw;
+  font-size: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background: #ca0d0d;
+  color: white;
+  cursor: pointer;
+}
+
+.main #Post .restaurants .item .row2 .explore h5 {
+  margin: 0;
+  line-height: 100%;
+}
+
+.main #Post .restaurants .item .row2 .cost {
+  width: 45%;
+  padding: 0;
+  text-align: right;
+  font-size: 1vw;
+}
+
+.main #Post .restaurants .item .row3 .area {
+  color: #aaa;
+  padding: 0;
+  width: 55%;
+  margin: 0;
+  font-weight: 400;
+  font-size: 1vw;
+}
+
+.main #Post .restaurants .item .row3 p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40%;
+  -webkit-box-shadow: inset 0px 1px 2px 1px #888;
+          box-shadow: inset 0px 1px 2px 1px #888;
+}
+
+.main #Post .restaurants .item .row3 p span {
+  padding: 0.1vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 1.5vw;
+  height: 1.5vw;
+  font-size: 0.9vw;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.main #Post .restaurants .item .row3 p .quantity {
+  color: red;
+  font-size: 1vw;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: default;
+}
+
+.main #Post .restaurants .item .image {
+  width: 100%;
+}
+
+.main #Post .restaurants .item .image img {
+  border-top-left-radius: 1.5vw;
+  border-top-right-radius: 1.5vw;
+  width: 100%;
+}
+
+.main .dark {
+  background: #171717;
+}
+
+.main .dark #filters .buttons {
+  border-right: 2px solid #444 !important;
+}
+
+.main .dark #filters .buttons button {
+  border: none !important;
+  background: #373737 !important;
+  -webkit-box-shadow: inset 0px 0px 5px 2px #222 !important;
+          box-shadow: inset 0px 0px 5px 2px #222 !important;
+  font-size: 0.6vw;
+  color: white !important;
+}
+
+.main .dark #filters .buttons .clear {
+  background: #ddd !important;
+  color: black !important;
+}
+
+.main .dark #filters input {
+  border-bottom: 0.1vw solid rgba(0, 0, 0, 0.4);
+}
+
+.main .dark .restaurants .item {
+  border: none !important;
+  -webkit-box-shadow: inset 1px 2px 8px 4px #252525 !important;
+          box-shadow: inset 1px 2px 8px 4px #252525 !important;
+}
+
+.main .dark .restaurants .item .row1 {
+  margin: 2px 0 0 0;
+}
+
+.main .dark .restaurants .item .row1 .name {
+  color: white;
+}
+
+.main .dark .restaurants .item .row1 .name h2 {
+  color: #ddd;
+}
+
+.main .dark .restaurants .item .row1 .rating {
+  color: #ca242481 !important;
+}
+
+.main .dark .restaurants .item .row2 .explore {
+  background: #ca242481 !important;
+}
+
+.main .dark .restaurants .item .row2 .explore h5 {
+  margin: 0;
+  line-height: 100%;
+}
+
+.main .dark .restaurants .item .row2 .cost {
+  color: white !important;
+}
+
+.main .dark .restaurants .item .row3 .area {
+  color: #aaa;
+}
+
+.main .dark .restaurants .item .row3 p {
+  background: #373737;
+  -webkit-box-shadow: inset 0px 0px 5px 2px #222 !important;
+          box-shadow: inset 0px 0px 5px 2px #222 !important;
+}
+
+.main .dark .restaurants .item .row3 p span {
+  color: #fff !important;
+}
+
+.main .dark .restaurants .item .row3 p .quantity {
+  color: red !important;
+}
+
+.main #cart {
+  width: 100vw;
+  margin: 0 auto;
+  height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  z-index: 50;
+  top: 10vh;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.main #cart .content {
+  max-height: 80vh;
+  overflow-y: scroll;
+  width: 90vw;
+  margin: 0 auto;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  color: black;
+}
+
+.main #cart .content::-webkit-scrollbar {
+  width: 2px;
+  color: black;
+}
+
+.main #cart .content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px black;
+          box-shadow: inset 0 0 5px black;
+  border-radius: 10px;
+}
+
+.main #cart .content::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+.main #cart .content .userdetails {
+  padding: 2vw 0;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main #cart .content .userdetails h1 {
+  line-height: 100%;
+  margin: 0;
+  font-size: 4vw;
+  font-weight: 400;
+}
+
+.main #cart .content .userdetails h2 {
+  width: 100%;
+  text-align: left;
+  font-size: 1.6vw;
+  font-weight: 500;
+}
+
+.main #cart .content .cartItems {
+  padding-top: 3vw;
+  width: 100%;
+  background-color: #89230E;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main #cart .content .cartItems .item {
+  width: 90%;
+  margin: 1vw auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1vw 0;
+  padding-bottom: 1vw;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 1vw;
+  font-weight: 200;
+}
+
+.main #cart .content .cartItems .item:last-child {
+  border: none;
+}
+
+.main #cart .content .cartItems .item .name {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.main #cart .content .cartItems .item .cost {
+  width: 12.5%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main #cart .content .cartItems .item .quantity {
+  width: 12.5%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main #cart .content .cartItems .item .amount {
+  width: 15%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main #cart .content .cartItems #head {
+  padding: 1vw 0;
+  font-size: 1.4vw;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.main #cart .content .cartItems .total {
+  width: 90%;
+  margin: 1vw auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main #cart .content .cartItems .total .name {
+  width: 85%;
+  margin: 0 auto;
+  font-size: 2vw;
+  font-weight: 600;
+  color: white;
+}
+
+.main #cart .content .cartItems .total p {
+  text-align: center;
+  font-weight: 700;
+  width: 15%;
+  font-size: 1.6vw;
+}
+
+.main .cartdark .content {
+  background: #333 !important;
+  color: white !important;
+}
+
+@-webkit-keyframes cartAnim {
+  0% {
+    -webkit-transform: rotate(0) scale(1.2);
+            transform: rotate(0) scale(1.2);
+  }
+  25% {
+    -webkit-transform: rotate(5deg) scale(1.2);
+            transform: rotate(5deg) scale(1.2);
+  }
+  50% {
+    -webkit-transform: rotate(0) scale(1.2);
+            transform: rotate(0) scale(1.2);
+  }
+  75% {
+    -webkit-transform: rotate(-5deg) scale(1.2);
+            transform: rotate(-5deg) scale(1.2);
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(1.2);
+            transform: rotate(0) scale(1.2);
+  }
+}
+
+@keyframes cartAnim {
+  0% {
+    -webkit-transform: rotate(0) scale(1.2);
+            transform: rotate(0) scale(1.2);
+  }
+  25% {
+    -webkit-transform: rotate(5deg) scale(1.2);
+            transform: rotate(5deg) scale(1.2);
+  }
+  50% {
+    -webkit-transform: rotate(0) scale(1.2);
+            transform: rotate(0) scale(1.2);
+  }
+  75% {
+    -webkit-transform: rotate(-5deg) scale(1.2);
+            transform: rotate(-5deg) scale(1.2);
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(1.2);
+            transform: rotate(0) scale(1.2);
+  }
+}
+/*# sourceMappingURL=style.css.map */
